@@ -1,7 +1,7 @@
 {
   "name": "dockyard-app-info-parser",
   "version": "0.3.4-rc.2",
-  "description": "Get info from apk, ipa, zip (contains app) file.",
+  "description": "Get info from apk, ipa, compressed .app file.",
   "main": "./src/index.js",
   "scripts": {
     "test": "node ./example/node.js",
@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/zcmgyu/app-info-parser",
   "keywords": [
+    "app",
     "ipa",
     "apk",
     "parser",
