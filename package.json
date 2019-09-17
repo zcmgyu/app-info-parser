@@ -1,6 +1,6 @@
 {
   "name": "dockyard-app-info-parser",
-  "version": "0.3.4-rc.3",
+  "version": "0.3.4-rc.4",
   "description": "Get info from apk, ipa, compressed .app file.",
   "main": "./src/index.js",
   "scripts": {
