@@ -273,8 +273,10 @@ function (_Zip) {
           var provisionInfo = _this2._parseProvision(provisionBuffer);
 
           plistInfo.mobileProvision = provisionInfo; // TODO: Parse Installation package icon
+          // Why need '\/' in regex? Because when unzip file, in __MACOSX folder also included __AppIcon... file,
+          // so cannot parse icon to png, need add splash to distinguish
 
-          var iconRegex = new RegExp(findIpaIconPath(plistInfo).toLowerCase());
+          var iconRegex = new RegExp('\/' + findIpaIconPath(plistInfo).toLowerCase());
 
           _this2.getEntry(iconRegex).then(function (iconBuffer) {
             // TODO: The icon of the ipa installation package has been specially processed and needs to be converted.
@@ -12122,7 +12124,7 @@ module.exports = new BufferPack();
 (function (Buffer){
 "use strict";
 
-(function() {
+(function () {
   var PNGHEADER_BASE64,
     bufferpack,
     crc,
@@ -12133,7 +12135,7 @@ module.exports = new BufferPack();
     zlib,
     indexOf =
       [].indexOf ||
-      function(item) {
+      function (item) {
         for (var i = 0, l = this.length; i < l; i++) {
           if (i in this && this[i] === item) return i;
         }
@@ -12154,8 +12156,8 @@ module.exports = new BufferPack();
 
   ignoreChunkTypes = ["CgBI", "iDOT"];
 
-  module.exports = function(stream, callback) {
-    return streamToBuffer(stream, function(err, buffer) {
+  module.exports = function (stream, callback) {
+    return streamToBuffer(stream, function (err, buffer) {
       var output;
       if (err) {
         return callback(err);
@@ -12169,7 +12171,7 @@ module.exports = new BufferPack();
     });
   };
 
-  module.exports.revert = revertCgBIBuffer = function(buffer) {
+  module.exports.revert = revertCgBIBuffer = function (buffer) {
     let isIphoneCompressed = false;
     let offset = 0;
     let chunks = [];

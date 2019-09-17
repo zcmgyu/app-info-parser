@@ -1,6 +1,6 @@
 {
   "name": "dockyard-app-info-parser",
-  "version": "0.3.4-rc.4",
+  "version": "0.3.4-rc.7",
   "description": "Get info from apk, ipa, compressed .app file.",
   "main": "./src/index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "rimraf src/* && babel lib -d src",
     "build:browser": "rimraf dist/* && browserify lib/index.js -t [ babelify ] -s AppInfoParser -d | exorcist ./dist/app-info-parser.js.map | derequire > dist/app-info-parser.js",
     "minify": "uglifyjs ./dist/app-info-parser.js -o ./dist/app-info-parser.min.js -c -m --source-map \"url='./dist/app-info-parser.mini.js.map'\"",
-    "dist": "npm run build:browser && npm run minify"
+    "dist": "npm run build:browser && npm run minify",
+    "npm-publish": "npm build && npm-publish"
   },
   "homepage": "https://github.com/zcmgyu/app-info-parser",
   "keywords": [
